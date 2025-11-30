@@ -249,113 +249,168 @@ Utilidade considera:
 
 ## 🧠 Implementação Técnica
 
-### Estrutura de Código (Dart)
+### Estrutura de Código (C# / Unity)
 
-```dart
-abstract class AIPlayer {
-  AILevel level;
-  GameState gameState;
-  
-  // Método principal de decisão
-  Card chooseCard(List<Card> availableCards);
-  
-  // Avaliação de carta
-  double evaluateCard(Card card, GameState state);
-  
-  // Detectar ameaças
-  bool detectThreat(Player opponent);
-  
-  // Escolher ação (construir/descartar/monumento)
-  Action chooseAction();
-}
+```csharp
+// Usando UnityEngine para acesso a MonoBehaviour e outras funções da Unity
+using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
 
-class ApprenticeAI extends AIPlayer {
-  @override
-  double evaluateCard(Card card, GameState state) {
-    return card.points + (card.resources.length * 0.5) + card.shields;
-  }
-}
+// A classe base para todos os níveis de IA. Herda de MonoBehaviour para poder ser um componente em um GameObject.
+public abstract class AIPlayer : MonoBehaviour
+{
+    public AILevel level;
+    protected GameState gameState; // Referência ao estado atual do jogo
 
-class VeteranAI extends AIPlayer {
-  @override
-  double evaluateCard(Card card, GameState state) {
-    double value = card.points 
-                 + (card.resources.length * 1.5) 
-                 + (card.shields * 2)
-                 + (card.symbols.length * 3);
-    
-    if (card.chain != null) value += 3;
-    if (shouldBlock(card)) value += 2;
-    
-    return value;
-  }
-  
-  bool shouldBlock(Card card) {
-    return Random().nextDouble() < 0.3; // 30% chance
-  }
-}
+    // Método principal que o GameManager chamará para obter a decisão da IA
+    public abstract CardData ChooseCard(List<CardData> availableCards);
 
-class MasterAI extends AIPlayer {
-  @override
-  double evaluateCard(Card card, GameState state) {
-    double base = calculateBaseValue(card);
-    double situational = calculateSituationalBonus(card, state);
-    double blocking = calculateBlockingValue(card, state.opponent);
-    
-    return base + situational + blocking;
-  }
-  
-  @override
-  Card chooseCard(List<Card> availableCards) {
-    // Simula 3 turnos à frente
-    Map<Card, double> projections = {};
-    for (Card card in availableCards) {
-      projections[card] = simulateFuture(card, 3);
+    // Método para avaliar o valor de uma única carta
+    protected abstract float EvaluateCard(CardData card, GameState state);
+
+    // Método para determinar a ação a ser tomada
+    public virtual GameAction ChooseAction(List<CardData> availableCards)
+    {
+        CardData cardToPlay = ChooseCard(availableCards);
+        // Lógica adicional pode ser inserida aqui para decidir entre construir, descartar, etc.
+        return new GameAction(ActionType.Construct, cardToPlay);
     }
-    return projections.entries.reduce((a, b) => 
-      a.value > b.value ? a : b
-    ).key;
-  }
 }
 
-class LegendaryAI extends AIPlayer {
-  @override
-  Card chooseCard(List<Card> availableCards) {
-    // Algoritmo MinMax com poda alfa-beta
-    return minimaxDecision(availableCards, depth: 4);
-  }
-  
-  Card minimaxDecision(List<Card> cards, {int depth = 4}) {
-    double bestValue = double.negativeInfinity;
-    Card bestCard = cards.first;
-    
-    for (Card card in cards) {
-      double value = minValue(
-        gameState.applyAction(Action.construct(card)),
-        depth - 1,
-        double.negativeInfinity,
-        double.infinity
-      );
-      if (value > bestValue) {
-        bestValue = value;
-        bestCard = card;
-      }
+// Exemplo da IA Aprendiz
+public class ApprenticeAI : AIPlayer
+{
+    public override CardData ChooseCard(List<CardData> availableCards)
+    {
+        if (availableCards.Count == 0) return null;
+
+        // Encontra a carta com a maior avaliação
+        return availableCards.OrderByDescending(card => EvaluateCard(card, gameState)).First();
     }
-    return bestCard;
-  }
+
+    protected override float EvaluateCard(CardData card, GameState state)
+    {
+        // Lógica de avaliação simples, como no documento
+        return card.pontos + (card.recursosProduzidos.Length * 0.5f) + card.escudos;
+    }
 }
+
+// Exemplo da IA Veterano com bloqueio
+public class VeteranAI : AIPlayer
+{
+    public override CardData ChooseCard(List<CardData> availableCards)
+    {
+        if (availableCards.Count == 0) return null;
+        
+        return availableCards.OrderByDescending(card => EvaluateCard(card, gameState)).First();
+    }
+
+    protected override float EvaluateCard(CardData card, GameState state)
+    {
+        float value = card.pontos
+                    + (card.recursosProduzidos.Length * 1.5f)
+                    + (card.escudos * 2f)
+                    + (card.simbolosCientificos.Length * 3f);
+
+        if (card.chain != null) value += 3f;
+        if (ShouldBlock(card, state)) value += 2f;
+
+        return value;
+    }
+
+    // Simples chance de 30% de identificar uma carta como "necessária" para bloqueio
+    private bool ShouldBlock(CardData card, GameState state)
+    {
+        // Uma lógica mais avançada aqui iria verificar o estado do oponente
+        return Random.value < 0.3f; // Random.value retorna um float entre 0.0 e 1.0
+    }
+}
+
+// Estrutura para a IA Lendária usando Minimax (simplificado)
+public class LegendaryAI : AIPlayer
+{
+    public override CardData ChooseCard(List<CardData> availableCards)
+    {
+        if (availableCards.Count == 0) return null;
+        
+        // Retorna a melhor jogada encontrada pelo algoritmo Minimax
+        return MinimaxDecision(availableCards, depth: 4);
+    }
+
+    protected override float EvaluateCard(CardData card, GameState state)
+    {
+        // A avaliação direta é menos importante aqui, pois o Minimax avalia estados futuros
+        // Mas ainda é usada como a função de avaliação final na profundidade máxima
+        float value = card.pontos; // ... e outros fatores
+        return value;
+    }
+
+    private CardData MinimaxDecision(List<CardData> cards, int depth)
+    {
+        CardData bestCard = null;
+        float bestValue = float.NegativeInfinity;
+
+        foreach (var card in cards)
+        {
+            // Simula a jogada e avalia o estado resultante
+            GameState futureState = gameState.SimulatePlay(card, this.gameObject);
+            float value = MinValue(futureState, depth - 1, float.NegativeInfinity, float.PositiveInfinity);
+
+            if (value > bestValue)
+            {
+                bestValue = value;
+                bestCard = card;
+            }
+        }
+        return bestCard;
+    }
+
+    // Função Min do algoritmo Minimax com poda Alfa-Beta
+    private float MinValue(GameState state, int depth, float alpha, float beta)
+    {
+        if (depth == 0 || state.IsGameOver())
+        {
+            return state.Evaluate(); // Avalia o estado final do jogo
+        }
+
+        float value = float.PositiveInfinity;
+        // ... (lógica para encontrar as jogadas possíveis do oponente e chamar MaxValue)
+        return value;
+    }
+
+    // Função Max do algoritmo (não mostrada para brevidade)
+    private float MaxValue(GameState state, int depth, float alpha, float beta) 
+    {
+        // ...
+        return 0f;
+    }
+}
+
+// Exemplo de como um CardData seria (usando ScriptableObject)
+// [CreateAssetMenu(fileName = "Nova Carta", menuName = "Elemental Nexus/Carta")]
+// public class CardData : ScriptableObject
+// {
+//     public string nome;
+//     public int pontos;
+//     public Resource[] recursosProduzidos;
+//     public int escudos;
+//     public ScienceSymbol[] simbolosCientificos;
+//     public CardData chain;
+//     // ... outros campos
+// }
 ```
 
 ### Balanceamento de Tempo
 
 | Nível | Tempo de Resposta | Complexidade Computacional |
 |-------|-------------------|----------------------------|
-| Aprendiz | Instantâneo (0.1s) | O(n) - Linear |
-| Veterano | Rápido (0.3s) | O(n log n) |
-| Mestre | Moderado (0.5-1s) | O(n²) - Quadrático |
-| Lendário | Pensando (1-2s) | O(n⁴) - MinMax limitado |
+| Aprendiz | Instantâneo (<0.1s) | O(n) - Linear |
+| Veterano | Rápido (0.1-0.2s) | O(n log n) |
+| Mestre | Moderado (0.3-0.5s) | O(n²) - Quadrático (simulação) |
+| Lendário | Pensando (0.5-1.5s) | O(b^d) - MinMax (b=ramificação, d=profundidade) |
 
-**Nota:** Delays artificiais podem ser adicionados para "humanizar" (IA muito rápida parece robótica).
+**Nota:** A performance em C# compilado na Unity (via IL2CPP) é geralmente muito alta. Delays artificiais podem ser adicionados via Coroutines para "humanizar" a IA, fazendo-a parecer que está "pensando".
 
 ---
 

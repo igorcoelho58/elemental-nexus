@@ -103,7 +103,7 @@ docs/
   - 4 níveis de dificuldade
   - Heurísticas de cada nível
   - Algoritmos de decisão
-  - Código exemplo em Dart
+  - Código exemplo em C#
 
 - [Roadmap de Desenvolvimento](tecnico/roadmap.md)
   - 6 fases de implementação
@@ -192,7 +192,7 @@ Todas as 60 cartas estão documentadas com:
 
 ### 🎨 Para COMEÇAR o Desenvolvimento:
 1. [ ] Gerar artes das cartas (começar com Gemini)
-2. [ ] Setup projeto Flutter/Dart
+2. [ ] Setup projeto Unity/C#
 3. [ ] Implementar estrutura de dados (classes)
 4. [ ] Seguir roadmap Fase por Fase
 

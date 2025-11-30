@@ -300,36 +300,36 @@ Write "Tesouro do Imperador" in Cinzel Decorative Bold font, antique bronze colo
 
 ---
 
-## 📖 **GRIMÓRIO** (6 cartas)
+## 📖 **MÍSTICO / GRIMÓRIO** (6 cartas)
 
-### Tomo Primordial
+### 1. Pergaminho do Aprendiz
 ```
-Write "Tomo Primordial" in Uncial Antiqua Bold font, bright cyan color (#00FFFF) with magical glow, in the top banner area. Center artwork: massive ancient tome open on reading stand, pages glowing with green-blue magical light, floating runic symbols rising from text, primordial knowledge contained within, weathered leather binding, mystical script writing itself, emerald green and cyan blue magical glow, forbidden knowledge aesthetic, detailed magical text effects. Do NOT modify the frame borders.
-```
-
-### Livro das Tempestades
-```
-Write "Livro das Tempestades" in Uncial Antiqua Bold font, bright cyan color (#00FFFF) with magical glow, in the top banner area. Center artwork: leather-bound tome with scales texture cover, open pages showing living storm clouds swirling within, lightning crackling across text, tempest magic contained in book, dragon scale binding, electric blue and stormy grey, dangerous knowledge, detailed storm effects in pages. Do NOT modify the frame borders.
+Center artwork: A young apprentice mage, robed in simple blue, seated at a wooden desk in a dusty library corner, intently studying a glowing, unfurling parchment scroll. Faint blue runic symbols float from the scroll towards their face. A single candle provides warm light, contrasting with the subtle magical glow. Stacks of old books surround them. The atmosphere is studious and quiet. Do NOT modify the frame borders.
 ```
 
-### Pergaminho Eterno
+### 2. O Escriba Rúnico
 ```
-Write "Pergaminho Eterno" in Uncial Antiqua Bold font, bright cyan color (#00FFFF) with magical glow, in the top banner area. Center artwork: infinitely long scroll unfurling endlessly, ancient text continuously writing itself in golden ink, paradoxical infinite document, self-updating knowledge, aged parchment with glowing script, endless wisdom, mysterious self-writing magic, detailed calligraphy animation. Do NOT modify the frame borders.
-```
-
-### Tomo Genesis
-```
-Write "Tomo Genesis" in Uncial Antiqua Bold font, bright cyan color (#00FFFF) with magical glow, in the top banner area. Center artwork: divine book radiating pure white light, pages showing birth of worlds and stars, creation magic captured in text, reality-writing grimoire, impossibly powerful knowledge, pure white light with nascent worlds, godlike power, cosmic creation, detailed universe birth imagery. Do NOT modify the frame borders.
+Center artwork: A focused runic scribe sits at a cluttered workbench filled with glowing inks, quills, and blank parchments. They are actively inscribing complex glowing blue runes onto a large scroll, which emits magical sparks. Around them, finished scrolls float mid-air, each radiating a different faint magical aura. The room is filled with arcane tools and glowing crystals. A sense of magical craftsmanship. Do NOT modify the frame borders.
 ```
 
-### Livro das Estrelas
+### 3. Tomo das Tempestades
 ```
-Write "Livro das Estrelas" in Uncial Antiqua Bold font, bright cyan color (#00FFFF) with magical glow, in the top banner area. Center artwork: spellbook with cover made of living constellations, pages containing actual night sky, stars twinkling within book, cosmic knowledge bound, celestial magic contained, deep space blue with brilliant stars, universe in book form, astronomical wonder, detailed constellation patterns. Do NOT modify the frame borders.
+Center artwork: A seasoned storm mage stands on a jagged cliff edge under a dark, stormy sky. They hold open a leather-bound tome covered in dragon scales, from which fierce lightning and swirling storm clouds erupt, forming a vortex around them. Their robes billow in the wind. Below, a raging ocean crashes. Electric blue and stormy grey colors dominate. Do NOT modify the frame borders.
 ```
 
-### Compendio Arcano
+### 4. Guardião do Saber
 ```
-Write "Compendio Arcano" in Uncial Antiqua Bold font, bright cyan color (#00FFFF) with magical glow, in the top banner area. Center artwork: absolutely massive floating tome emanating all four elements simultaneously - nature, earth, water, fire - ultimate knowledge containing all magic, book of everything, cosmic scale grimoire, all elements swirling around book, complete magical knowledge, transcendent power, detailed element convergence. Do NOT modify the frame borders.
+Center artwork: A towering, ancient construct made entirely of animated books, scrolls, and floating runes stands guard in the center of a vast, mystical library. Its eyes glow with arcane blue light, and knowledge flows like energy around its form. It holds a massive, glowing staff. The library shelves around it seem alive with magic. A sense of ancient, protective power. Do NOT modify the frame borders.
+```
+
+### 5. O Oráculo Celestial
+```
+Center artwork: A mystical oracle figure, blindfolded and floating in a meditative pose inside an ancient observatory dome. Before them, a large, open spellbook with a cover of living constellations projects a holographic map of the universe, showing galaxies and stars. The oracle's hands manipulate the cosmic projections. The room is filled with starlight and arcane machinery. A feeling of cosmic knowledge and foresight. Do NOT modify the frame borders.
+```
+
+### 6. A Confluência Arcana
+```
+Center artwork: A circle of powerful archmages, each representing a different magical discipline (fire, ice, nature, arcane), channel their combined energy into a colossal, floating grimoire at the center of a nexus of power. The book radiates blinding white and multicolored light, tearing open a stable rift in reality above it. Magical energy swirls violently, creating a vortex of pure power. The ground beneath them is cracked with arcane energy. The ultimate display of magical might. Do NOT modify the frame borders.
 ```
 
 ---

@@ -48,13 +48,11 @@ Implementar mecânicas fundamentais do jogo.
 ### Tarefas
 
 **Semana 1: Estrutura de Dados**
-- [ ] Setup do projeto Flutter/Dart
-- [ ] Criar classes de modelo:
-  - `Card`, `Monument`, `Player`, `GameState`
-  - `Resource`, `CardType`, `Era`
-- [ ] Sistema de serialização (JSON)
-- [ ] Banco de dados local (Hive/SQLite)
-- [ ] Carregar dados das 60 cartas
+- [ ] Setup do projeto Unity/C#
+- [ ] Criar ScriptableObjects para `Card`, `Monument`
+- [ ] Criar classes C# para `Player`, `GameState`
+- [ ] Sistema de serialização (JSON para save games)
+- [ ] Criar os 60 assets de `CardData` via ScriptableObjects
 
 **Semana 2: Lógica de Jogo**
 - [ ] Sistema de recursos e produção
@@ -186,7 +184,7 @@ Implementar sistemas de retenção e progressão.
 ### Tarefas
 
 **Semana 1: Sistema de Desbloqueio**
-- [ ] Salvar progresso local (SharedPreferences)
+- [ ] Salvar progresso local (PlayerPrefs ou JSON)
 - [ ] Rastreamento de vitórias
   - Por nível de IA
   - Por tipo de vitória
@@ -343,44 +341,22 @@ Refinar, testar e preparar para lançamento.
 ## 🛠️ Stack Tecnológico
 
 ### Desenvolvimento
-- **Framework:** Flutter 3.x
-- **Linguagem:** Dart 3.x
-- **IDE:** VS Code / Android Studio
-- **Controle de Versão:** Git + GitHub
+- **Motor:** Unity 2022 LTS (ou superior)
+- **Linguagem:** C# 10
+- **IDE:** Visual Studio / JetBrains Rider
+- **Controle de Versão:** Git + GitHub (com Git LFS)
 
 ### Bibliotecas Principais
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  
-  # State Management
-  provider: ^6.0.0
-  
-  # Persistência
-  hive: ^2.2.3
-  hive_flutter: ^1.1.0
-  shared_preferences: ^2.2.0
-  
-  # Animações
-  flutter_animate: ^4.2.0
-  
-  # UI
-  google_fonts: ^5.1.0
-  
-  # Áudio
-  audioplayers: ^5.0.0
-  
-  # Utilitários
-  uuid: ^4.0.0
-```
+- **Animações:** DOTween (opcional, para tweens via código)
+- **UI:** Unity UI (nativo)
+- **Persistência:** PlayerPrefs ou sistema de serialização JSON customizado
 
 ### Ferramentas
 - **Design:** Figma (wireframes)
 - **Arte:** Leonardo.ai / Gemini
-- **Testes:** Flutter Test + Integration Tests
+- **Testes:** Unity Test Runner (Edit Mode e Play Mode)
 - **CI/CD:** GitHub Actions (futuro)
-- **Analytics:** Firebase Analytics (pós-lançamento)
+- **Analytics:** Unity Analytics (pós-lançamento)
 
 ---
 
@@ -399,6 +375,7 @@ dependencies:
 - Adobe Illustrator (UI assets): $20/mês (pode usar alternativas gratuitas)
 - Figma Pro: $12/mês (versão gratuita funciona)
 - Áudio (compra de SFX/Música): $0-50 (pode usar assets gratuitos)
+- DOTween Pro: ~$15 (opcional, a versão gratuita é suficiente)
 
 ### Receita Potencial (Ano 1, Otimista)
 ```
@@ -450,7 +427,7 @@ ROI: ~2.000%
 
 1. **HOJE:** Finalizar documentação
 2. **Esta Semana:** Começar geração de artes (Fase 1)
-3. **Semana 2:** Setup do projeto Flutter
+3. **Semana 2:** Setup do projeto Unity
 4. **Semana 3:** Primeiras cartas jogáveis
 5. **Mês 1 Completo:** Arte + Estrutura básica
 6. **Mês 2:** Mecânicas + IA

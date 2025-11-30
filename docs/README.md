@@ -19,7 +19,7 @@ Dois reinos elementais competem por supremacia através do domínio dos 5 elemen
 ## 🎯 Objetivos do Projeto
 
 - **Público-alvo**: Jogadores casuais e entusiastas de jogos de tabuleiro
-- **Plataforma**: Mobile Android (Flutter/Dart)
+- **Plataforma**: Mobile (Android, iOS) e Desktop (Windows/Linux/Mac) com Unity
 - **Modo**: Single-player offline (vs IA com 4 níveis de dificuldade)
 - **Duração da partida**: 10-15 minutos
 - **Inspiração**: 7 Wonders Duel, mas com mecânicas e temática únicas
@@ -68,7 +68,7 @@ docs/
 │   └── estrategia-criacao-arte.md
 │
 └── tecnico/
-    ├── arquitetura-flutter.md
+    ├── arquitetura-unity.md
     ├── sistema-ia.md
     ├── balanceamento.md
     ├── roadmap.md
@@ -91,7 +91,7 @@ Referência visual criada: "Floresta Encantada" - moldura celta integrada, arte 
 - [x] Sistema de IA especificado (4 níveis)
 - [x] **Documentação completa** - Todas as 60 cartas documentadas
 - [ ] **PRÓXIMO**: Criação de arte das cartas
-- [ ] Implementação em Flutter/Dart
+- [ ] Implementação em Unity/C#
 - [ ] Testes e ajustes de balanceamento
 - [ ] Lançamento versão 1.0
 
